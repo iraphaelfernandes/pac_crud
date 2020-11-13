@@ -9,6 +9,10 @@ const app = express();
 
 app.engine("handlebars", handlebars({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+app.use('/css', express.static('css'));
+app.use('/js', express.static('js'));
+
+
 
 
 
@@ -18,6 +22,14 @@ app.get("/", (req, res)=>{
    //res.send('Mensagem');
   //res.sendFile(__dirname + "/index.html");
   res.render('index');
+});
+app.get("/javascript", (req, res)=>{
+  
+  res.sendFile(__dirname + '/js/javascript.js');
+});
+app.get("/style", (req, res)=>{
+  
+  res.sendFile(__dirname + '/css/style.css');
 });
 
 
